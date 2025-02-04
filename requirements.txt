@@ -1,0 +1,4 @@
+numpy
+BCI2kReader
+scipy
+pandas
