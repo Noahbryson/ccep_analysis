@@ -1,3 +1,4 @@
+import platform
 import os
 from pathlib import Path
 from BCI2kReader import BCI2kReader as b2k
@@ -522,8 +523,13 @@ def alphaSortDict(a: dict) -> dict:
 
 
 if __name__ == "__main__":
-    dataPath = Path(
-        r"/Users/nkb/Library/CloudStorage/Box-Box/Brunner Lab/DATA/SCAN_Mayo")
+    localEnv = platform.system()
+    userPath = Path(os.path.expanduser('~'))
+    if localEnv == 'Windows':
+        dataPath = userPath / r"Box\Brunner Lab\DATA\SCAN_Mayo"
+    else:
+        dataPath = userPath/"Library/CloudStorage/Box-Box/Brunner Lab/DATA/SCAN_Mayo"
+    
     subject = 'BJH041'
     gammaRange = [70,170]
     session = 'pre_ablation'
